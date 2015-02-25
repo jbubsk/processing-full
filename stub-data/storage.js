@@ -6,8 +6,8 @@ function getRandomTests(number) {
 
     for (i; i < number; i++) {
         tests.push({
-            name: 'Test# ' + i + Math.random() * 10000,
-            duration: Math.random() * 100
+            name: 'Test#' + parseInt(Math.random() * 10000, 0),
+            duration: parseInt(Math.random() * 10000, 0)
         });
     }
     return tests;
@@ -112,7 +112,7 @@ function getInitialData() {
             item.buildDetails = {
                 details: 'It\'s details about build tests',
                 numberOfClasses: parseInt(Math.random() * 100, 0),
-                duration: parseInt(Math.random() * 100, 3),
+                duration: parseInt(Math.random() * 100, 0),
                 result: item.build
             };
 

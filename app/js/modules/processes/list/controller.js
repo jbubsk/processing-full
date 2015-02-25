@@ -1,5 +1,5 @@
 angular.module('processes')
-    .controller('ProcessesController', function ($scope, $state, ProcessingService, PassService) {
+    .controller('ProcessesController', function ($scope, $state, $window, ProcessingService, PassService) {
         var iconMap = {
                 firewall: {
                     running: {
@@ -55,38 +55,41 @@ angular.module('processes')
                 accepted: 'green'
             };
 
-        if($state.params.processId || $state.params.group){
-            $state.go('processes');
-        }
-        $scope.processList = [];
+        if ($state.current.name !== 'processes') {
+            $window.location.hash = '';
+            $window.location.reload();
+        } else {
 
-        ProcessingService.getInitialData()
-            .success(function (data, status, headers, config) {
-                if (data.result) {
-                    data.result.forEach(function (item) {
-                        item.iconUrl = iconMap[item.type][item.state].icon;
-                        item.rowClass = iconMap[item.type][item.state].rowClass;
-                        item.stateCaption = states[item.state];
+            $scope.processList = [];
 
-                        item.metricsClass = blocks[item.metrics];
-                        item.buildClass = blocks[item.build];
-                        item.uTestClass = blocks[item.unitTest];
-                        item.fTestClass = blocks[item.functionalTest];
-                    });
-                    $scope.processList = data.result;
-                } else {
-                    console.warn('No data received');
+            ProcessingService.getInitialData()
+                .success(function (data, status, headers, config) {
+                    if (data.result) {
+                        data.result.forEach(function (item) {
+                            item.iconUrl = iconMap[item.type][item.state].icon;
+                            item.rowClass = iconMap[item.type][item.state].rowClass;
+                            item.stateCaption = states[item.state];
+
+                            item.metricsClass = blocks[item.metrics];
+                            item.buildClass = blocks[item.build];
+                            item.uTestClass = blocks[item.unitTest];
+                            item.fTestClass = blocks[item.functionalTest];
+                        });
+                        $scope.processList = data.result;
+                    } else {
+                        console.warn('No data received');
+                    }
+                })
+                .error(function (data, status, headers, config) {
+                    console.error(data);
+                });
+
+            $scope.expand = function (process) {
+                if (process.state !== 'pending' && process.state !== 'running') {
+                    $scope.templateProcess = process.name;
+                    PassService.setObject(process.id, process);
+                    $state.go('processes.expand', {processId: process.id});
                 }
-            })
-            .error(function (data, status, headers, config) {
-                console.error(data);
-            });
-
-        $scope.expand = function (process) {
-            if (process.state !== 'pending' && process.state !== 'running') {
-                $scope.templateProcess = process.name;
-                PassService.setObject(process.id, process);
-                $state.go('processes.expand', {processId: process.id});
-            }
-        };
+            };
+        }
     });

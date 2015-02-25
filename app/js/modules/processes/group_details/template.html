@@ -33,7 +33,7 @@
             <div ng-if="view === 'build'">
                 <span>Duration:</span>
 
-                <div ng-bind="model.duration"></div>
+                <div ng-bind="model.duration + ' s'"></div>
                 <br/>
                 <span>Number of classes:</span>
 
@@ -56,7 +56,7 @@
                             <span ng-bind="test.name"></span>
                             <br/>
                             <span>Duration:</span>
-                            <span ng-bind="test.duration"></span>
+                            <span ng-bind="test.duration + ' s'"></span>
                         </div>
                     </div>
                 </div>
@@ -71,7 +71,7 @@
                             <span ng-bind="test.name"></span>
                             <br/>
                             <span>Duration:</span>
-                            <span ng-bind="test.duration"></span>
+                            <span ng-bind="test.duration + ' s'"></span>
                         </div>
                     </div>
                 </div>

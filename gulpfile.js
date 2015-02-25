@@ -7,7 +7,8 @@ require('./gulp/uglify')(gulp);
 require('./gulp/run_node')(gulp);
 require('./gulp/client_watch')(gulp);
 
-gulp.task('build-scripts', ['uglify-scripts', 'copy-html']);
+//gulp.task('build-scripts', ['uglify-scripts', 'copy-html']);
+gulp.task('build-scripts', ['copy-scripts', 'copy-html']);
 gulp.task('build-css', ['minify-css']);
 gulp.task('build-images', ['copy-images']);
 
