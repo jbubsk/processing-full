@@ -1,0 +1,383 @@
+$font-stack: Helvetica, sans-serif;
+$green-font-color: rgba(22, 94, 46, 0.95);
+$red-font-color: rgba(193, 16, 18, 0.59);
+$blue-font-color: rgba(38, 49, 156, 0.99);
+
+body {
+  font: 100% $font-stack;
+}
+
+#wrap {
+  margin: 5% 10%;
+  padding: 2% 0 5% 2%;
+  border: 1px solid rgba(73, 137, 135, 0.50);
+}
+
+.icon-wrapper-small {
+  width: 28px;
+  height: 28px;
+  margin-top: -10px !important;
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+
+.row {
+  margin: 5px;
+  padding: 3px;
+  cursor: pointer;
+  font-weight: 200;
+  font-size: 14px;
+}
+
+.headers div {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.cust-row {
+  margin: 5px;
+  padding: 3px;
+  border: 2px solid;
+  cursor: pointer;
+  font-weight: 200;
+  font-size: 14px;
+}
+
+.borderRed {
+  border-color: red;
+  background: -webkit-linear-gradient(left, rgb(190, 7, 18), white 80%) fixed;
+}
+
+.rowRed {
+  @extend .cust-row;
+  border-color: red;
+  background: -webkit-linear-gradient(left, rgba(255, 0, 0, 0.07), white 80%) fixed;
+  color: $red-font-color;
+}
+
+.rowBlue {
+  @extend .cust-row;
+  border-color: #0097d5;
+  background: -webkit-linear-gradient(left, rgba(89, 164, 242, 0.15), white 80%) fixed;
+  color: $blue-font-color;
+}
+
+.rowGrey {
+  @extend .cust-row;
+  border-color: rgb(203, 199, 199);
+  background: rgba(209, 220, 232, 0.63);
+  opacity: 0.5;
+  color: rgba(140, 146, 139, 0.95);
+}
+
+.rowGreen {
+  @extend .cust-row;
+  border-color: green;
+  background: -webkit-linear-gradient(left, rgba(68, 205, 68, 0.14), white 80%) fixed;
+  color: $green-font-color;
+}
+
+.separator {
+  height: 10px;
+}
+
+.rectangle {
+  height: 22px !important;
+  width: 30px !important;
+  border: 1px solid #000000;
+  border-radius: 1px;
+  margin-top: -7px !important;
+  margin-left: 10px;
+  -moz-box-shadow: 2px 2px 10px grey;
+  -webkit-box-shadow: 2px 2px 10px grey;
+  box-shadow: 1px 1px 1px grey;
+
+}
+
+.grey {
+  background: rgba(108, 104, 104, 0.36);
+}
+
+.red {
+  background: rgb(190, 7, 18);
+}
+
+.failed {
+  color: rgba(255, 0, 0, 0.60) !important;
+}
+
+.succeed {
+  color: rgba(17, 119, 17, 0.90) !important;
+}
+
+.green {
+  background: #008000;
+}
+
+.blue {
+  background: rgba(18, 54, 194, 0.42);
+}
+
+thead th {
+  font-weight: 200;
+}
+
+.col-md-1, .col-md-2, .col-md-3 {
+  padding: 10px 5px 0;
+  text-align: center;
+}
+
+.expand-block {
+  margin: 50px 0px 20px 20px;
+}
+
+.big-rectangle {
+  height: 170px !important;
+  width: 200px !important;
+
+  margin-right: 20px;
+  border-radius: 1px;
+}
+
+.shadow {
+  -moz-box-shadow: 2px 2px 20px grey;
+  -webkit-box-shadow: 2px 2px 20px grey;
+  box-shadow: 2px 2px 20px grey;
+}
+
+.big-rectangle.green {
+  @extend .shadow;
+  border: 2px solid rgba(11, 81, 20, 0.79);
+  background: -webkit-linear-gradient(top left, rgba(15, 237, 68, 0.17), white 25%);
+}
+
+.title {
+  font-weight: bold;
+  text-align: left;
+  padding-left: 5px;
+}
+
+.big-rectangle.green .title {
+  @extend .title;
+  color: $green-font-color;
+}
+
+.big-rectangle.red {
+  @extend .shadow;
+  border: 2px solid rgba(214, 6, 18, 0.55);
+  background: -webkit-linear-gradient(top left, rgba(249, 3, 3, 0.17), white 22%);
+}
+
+.big-rectangle.red .title {
+  @extend .title;
+  color: $red-font-color;
+}
+
+.big-rectangle.blue {
+  @extend .shadow;
+  border: 2px solid rgba(7, 51, 141, 0.79);
+  background: -webkit-linear-gradient(top left, rgba(38, 49, 156, 0.17), white 22%);
+}
+
+.big-rectangle.blue .title {
+  @extend .title;
+  color: $green-font-color;
+}
+
+.underlined {
+  text-decoration: underline;
+  font-weight: bold;
+  color: #0040D0;
+}
+
+.clear {
+  clear: both;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.icon-wrapper-big {
+  margin: 5px 15px 10px 20px;
+  position: relative;
+  text-align: center;
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  .inscription {
+    color: #000000 !important;
+    font-weight: 200;
+    font-size: 12px;
+    margin-top: 2px;
+  }
+}
+
+.icon-wrapper-big.arrow {
+  width: 50px;
+  height: 50px;
+}
+
+.icon-wrapper-big.pc {
+  width: 60px;
+  height: 60px;
+  margin: 15px 10px 10px 15px;
+}
+
+.icon-text {
+  position: absolute;
+  color: #ffffff;
+  font-size: 16px;
+  min-width: 18px;
+}
+
+.icon-text.right {
+  top: 25px;
+  left: 16px;
+}
+
+.icon-text.bottom {
+  top: 20px;
+  left: 14px;
+  color: #000000;
+}
+
+.image-row.one {
+  margin-bottom: 35px;
+}
+
+.chart-container {
+  margin-left: -80px;
+  margin-top: 5px;
+}
+
+.chart {
+  height: 90px !important;
+  width: 180px !important;
+}
+
+.chart-desc {
+  position: absolute;
+  top: 35px;
+  left: 120px;
+}
+
+.big-font {
+  font-size: 28px;
+  font-weight: 500;
+  color: rgb(114, 172, 77);
+}
+
+.small-font {
+  font-size: 12px;
+  color: #000000;
+  margin-bottom: 3px;
+}
+
+.code-coverage.progress {
+  margin-top: 10px;
+  min-width: 90px;
+  min-height: 30px;
+  background: rgb(246, 203, 174);
+}
+
+.code-coverage div {
+  position: absolute;
+  min-height: 30px;
+}
+
+.code-coverage .text {
+  width: 100%;
+  text-align: center;
+  margin-top: 3px;
+  color: #000000;
+  z-index: 100;
+}
+
+.code-coverage .text:first-child div {
+  font-size: 18px;
+  font-weight: bold;
+  color: rgb(114, 172, 77);
+}
+
+.progress {
+  background: rgba(141, 213, 95, 0.47);
+}
+
+.detail-overlay {
+  min-height: 400px;
+  min-width: 700px;
+  border-radius: 2px;
+  border: 1px solid grey;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-top: -200px;
+  margin-left: -350px;
+  background: #ffffff;
+  -moz-box-shadow: 0px 0px 60px grey;
+  -webkit-box-shadow: 0px 0px 60px grey;
+  box-shadow: 0px 0px 60px grey;
+  z-index: 500;
+}
+
+.details {
+  width: 100%;
+  padding-top: 10px;
+  min-height: 30px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+  color: brown;
+  background: -webkit-linear-gradient(top, rgba(140, 146, 139, 0.60), white 92%);
+  float: left;
+}
+
+.details-content {
+  width: 100%;
+  padding-left: 20%;
+  padding-top: 30px;
+}
+
+.close {
+  margin-right: 5px;
+  margin-top: -5px;
+}
+
+.details-content span {
+  font-weight: bold;
+}
+
+.scroll {
+  height: 200px;
+  overflow-y: scroll;
+}
+
+.result-title {
+  font-weight: bold;
+  font-size: 16px;
+  margin: 5px;
+  color: #000000;
+}
+
+.result-caption {
+  font-weight: bold;
+  font-size: 14px;
+  margin: 5px;
+}
+
+.main-result {
+  font-size: 20px;
+  margin: 5px;
+}
+
+select {
+  margin: 5px 0;
+}

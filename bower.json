@@ -1,0 +1,15 @@
+{
+  "name": "assignment",
+  "version": "0.0.1",
+  "authors": [
+    "jbubsk"
+  ],
+  "description": "assignment task",
+  "dependencies": {
+    "angular": "1.3.10",
+    "angular-ui-router": "*",
+    "bootstrap": "3.3.2",
+    "Chart.js": "~1.0.1",
+    "angular-chart.js": "~0.5.2"
+  }
+}

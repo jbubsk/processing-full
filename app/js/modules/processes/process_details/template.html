@@ -1,0 +1,146 @@
+<div class="row expand-block">
+
+    <div class="col-md-2 big-rectangle"
+         ng-class="process.metricsClass"
+         ng-click="openDetails('metrics', $event)">
+
+        <div class="title">Metrics</div>
+        <div class="image-row">
+            <div metrics-arrow icon-url="firstIconUrl" value="process.uTestPassed" text="{{'Test'}}"
+                 align="'right'"></div>
+            <div metrics-arrow icon-url="secondIconUrl" value="process.uTestFailed" text="{{'Maintainability'}}"
+                 align="'right'"></div>
+            <div class="clear"></div>
+        </div>
+        <div class="image-row">
+            <div metrics-arrow icon-url="thirdIconUrl" value="process.uTestPassed" text="{{'Security'}}"
+                 align="'bottom'"></div>
+            <div metrics-arrow icon-url="fourthIconUrl" value="process.uTestFailed" text="{{'Workmanship'}}"
+                 align="'bottom'"></div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <div class="col-md-2 big-rectangle"
+         ng-class="process.buildClass"
+         ng-click="openDetails('build', $event)">
+
+        <div ng-if="process.build !== 'pending'">
+            <div class="title">Build</div>
+            <div class="image-row one">
+                <div class="icon-wrapper-big pc fl">
+                    <img ng-src="{{pcIconUrl}}"/>
+                    <span class="inscription">Debug</span>
+                </div>
+                <div class="icon-wrapper-big pc fl">
+                    <img ng-src="{{pcIconUrl}}"/>
+                    <span class="inscription">Release</span>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <span ng-bind="process.buildTime | date : 'M/d/yy h:mm:ss a'"></span>
+        </div>
+    </div>
+
+    <!-- unit tests -->
+    <div class="col-md-2 big-rectangle chart-wrapper"
+         ng-class="process.uTestClass"
+         ng-controller="UnitChartController"
+         ng-click="openDetails('uTests', $event)">
+
+        <div ng-if="process.unitTest !== 'pending'">
+            <div class="title">Unit test</div>
+            <canvas chart-pie class="chart"
+                    data="data"
+                    labels="labels"
+                    options="options"
+                    colours="colours"></canvas>
+
+            <div class="chart-desc">
+                <span class="big-font">{{process.uTestPassedPerc + '%'}}</span>
+                <br/>
+                <span class="small-font">tests passed</span>
+
+                <span class="big-font failed">{{process.uTestFailedPerc + '%'}}</span>
+                <br/>
+                <span class="small-font">tests failed</span>
+            </div>
+            <div class="code-coverage progress">
+                <div class="text">
+                <span ng-style="{color:process.uTestCoverage > 50 ? 'green': 'red'}">
+                    {{process.uTestCoverage + '%'}}
+                </span>
+                    <br/>
+                    <span class="small-font">code covered</span>
+                </div>
+                <div class="progress" ng-style="getProgress(process.uTestCoverage)"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- functional tests -->
+    <div class="col-md-2 big-rectangle"
+         ng-class="process.fTestClass"
+         ng-controller="FunctionalChartController"
+         ng-click="openDetails('fTests', $event)">
+
+        <div ng-if="process.functionalTest !== 'pending'">
+            <div class="title">Functional test</div>
+            <canvas chart-pie class="chart"
+                    data="data"
+                    labels="labels"
+                    options="options"
+                    colours="colours"></canvas>
+            <div class="chart-desc">
+                <span class="big-font">{{process.fTestPassedPerc + '%'}}</span>
+                <br/>
+                <span class="small-font">tests passed</span>
+
+                <span class="big-font failed">{{process.fTestFailedPerc + '%'}}</span>
+                <br/>
+                <span class="small-font">tests failed</span>
+            </div>
+            <div class="code-coverage progress">
+                <div class="text">
+                <span ng-style="{color:process.fTestCoverage > 50 ? 'green': 'red'}">
+                    {{process.fTestCoverage + '%'}}
+                </span>
+                    <br/>
+                    <span class="small-font">code covered</span>
+                </div>
+                <div class="progress" ng-style="getProgress(process.fTestCoverage)"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- result -->
+    <div class="col-md-2" ng-controller="ResultController">
+
+        <div class="result-title">Result:</div>
+        <div class="result-caption" ng-bind="process.resultMetricsCaption"></div>
+        <div class="main-result" ng-bind="process.resultMetrics"></div>
+        <div class="result-actions">
+            <div ng-if="process.state === 'succeed'">
+                <button class="btn btn-primary">Deploy</button>
+                <span> to:</span>
+
+                <select class="btn btn-primary">
+                    <option value="Production">Production</option>
+                    <option value="Test">Test</option>
+                    <option value="Dev">Dev</option>
+                </select>
+            </div>
+
+            <div ng-if="process.state === 'rejected'">
+                <button class="btn btn-primary">Find issues</button>
+            </div>
+
+            <div ng-if="process.state === 'accepted'">
+                <button class="btn btn-primary">Find Merged Build</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div ui-view=""></div>
+</div>

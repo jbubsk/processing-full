@@ -1,0 +1,82 @@
+<div class="detail-overlay" ng-click="stopClick($event)">
+
+    <div>
+        <div class="details">
+            <dic ng-bind="model.details"></dic>
+            <dic class="close fr" ng-click="close()">X</dic>
+            <dic class="clear"></dic>
+        </div>
+        <br/>
+        <br/>
+        <br/>
+
+        <div class="details-content">
+
+            <div ng-if="view === 'metrics'">
+                <span>Maintainability:</span>
+
+                <div ng-bind="model.maintainability"></div>
+                <br/>
+                <span>Security:</span>
+
+                <div ng-bind="model.security"></div>
+                <br/>
+                <span>Test:</span>
+
+                <div ng-bind="model.test"></div>
+                <br/>
+                <span>Workmanship:</span>
+
+                <div ng-bind="model.test"></div>
+            </div>
+
+            <div ng-if="view === 'build'">
+                <span>Duration:</span>
+
+                <div ng-bind="model.duration"></div>
+                <br/>
+                <span>Number of classes:</span>
+
+                <div ng-bind="model.numberOfClasses"></div>
+                <br/>
+                <span>Result:</span>
+
+                <div ng-bind="model.result"></div>
+            </div>
+
+            <div ng-if="view === 'uTests' || view === 'fTests'">
+
+                <div class="fl">
+                    <a class="failed" ng-bind="'Failed:' + model.failed.length"></a>
+
+                    <div class="scroll">
+
+                        <div ng-repeat="test in model.failed">
+                            <span>Name:</span>
+                            <span ng-bind="test.name"></span>
+                            <br/>
+                            <span>Duration:</span>
+                            <span ng-bind="test.duration"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <a class="succeed" ng-bind="'Passed:' + model.passed.length"></a>
+
+                    <div class="scroll">
+
+                        <div ng-repeat="test in model.passed">
+                            <span>Name:</span>
+                            <span ng-bind="test.name"></span>
+                            <br/>
+                            <span>Duration:</span>
+                            <span ng-bind="test.duration"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>

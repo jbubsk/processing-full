@@ -1,0 +1,57 @@
+<div>
+    <div class="row headers">
+        <div class="col-md-3">Changelist / Build</div>
+        <div class="col-md-1">Owner</div>
+        <div class="col-md-3">Time Started</div>
+        <div class="col-md-1">State</div>
+        <div class="col-md-1">Metrics</div>
+        <div class="col-md-1">Build</div>
+        <div class="col-md-1">Unit Test</div>
+        <div class="col-md-1">Functional Test</div>
+    </div>
+
+    <div class="row cust-row"
+         ng-repeat="process in processList"
+         ng-class="process.rowClass"
+         ng-click="expand(process)">
+
+        <div class="col-md-1">
+            <div class="icon-wrapper-small">
+                <img ng-src="{{process.iconUrl}}" alt=""/>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div ng-bind="process.name" ng-class="{underlined: templateProcess === process.name}"></div>
+        </div>
+        <div class="col-md-1" ng-bind="process.owner"></div>
+        <div class="col-md-3" ng-bind="process.timeStarted | date : 'M/d/yy h:mm:ss a'"></div>
+        <div class="col-md-1" ng-bind="process.stateCaption"></div>
+        <div class="col-md-1">
+            <div class="rectangle"
+                 ng-class="process.metricsClass"
+                 ng-hide="templateProcess === process.name">
+            </div>
+        </div>
+        <div class="col-md-1">
+            <div class="rectangle"
+                 ng-class="process.buildClass"
+                 ng-hide="templateProcess === process.name">
+            </div>
+        </div>
+        <div class="col-md-1">
+            <div class="rectangle"
+                 ng-class="process.uTestClass"
+                 ng-hide="templateProcess === process.name">
+            </div>
+        </div>
+        <div class="col-md-1">
+            <div class="rectangle"
+                 ng-class="process.fTestClass"
+                 ng-hide="templateProcess === process.name">
+            </div>
+        </div>
+        <div ng-if="templateProcess === process.name">
+            <div ui-view=""></div>
+        </div>
+    </div>
+</div>
