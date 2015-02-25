@@ -1,5 +1,18 @@
 var data = [];
 
+function getRandomTests(number) {
+    var tests = [],
+        i = 0;
+
+    for (i; i < number; i++) {
+        tests.push({
+            name: 'Test# ' + i + 1,
+            duration: Math.random() * 100
+        });
+    }
+    return tests;
+}
+
 function getInitialData() {
     var item,
         itemNumber = 10,
@@ -74,18 +87,46 @@ function getInitialData() {
 
             item.timeStarted = new Date().getTime() - random;
             item.buildTime = new Date().getTime() - random + 100;
+
             item.uTestPassed = parseInt(Math.random() * 100, 0);
             item.uTestFailed = parseInt(Math.random() * 100, 0);
-            item.uTestFailedPerc = parseInt(item.uTestFailed/((item.uTestPassed + item.uTestFailed)/100), 0);
+            item.uTestFailedPerc = parseInt(item.uTestFailed / ((item.uTestPassed + item.uTestFailed) / 100), 0);
             item.uTestPassedPerc = 100 - item.uTestFailedPerc;
 
             item.fTestPassed = parseInt(Math.random() * 100, 0);
             item.fTestFailed = parseInt(Math.random() * 100, 0);
-            item.fTestFailedPerc = parseInt(item.fTestFailed/((item.fTestPassed + item.fTestFailed)/100), 0);
+            item.fTestFailedPerc = parseInt(item.fTestFailed / ((item.fTestPassed + item.fTestFailed) / 100), 0);
             item.fTestPassedPerc = 100 - item.fTestFailedPerc;
 
             item.uTestCoverage = parseInt(Math.random() * 100, 0);
             item.fTestCoverage = parseInt(Math.random() * 100, 0);
+
+            item.metricsDetails = {
+                details: 'It\'s details about metrics',
+                test: 'Some information about test',
+                maintainability: 'Some information about maintainability',
+                security: 'Some information about security',
+                workmanship: 'Some information about workmanship'
+            };
+
+            item.buildDetails = {
+                details: 'It\'s details about build tests',
+                numberOfClasses: parseInt(Math.random() * 100, 0),
+                duration: Math.random() * 100,
+                result: item.build
+            };
+
+            item.uTestDetails = {
+                details: 'It\'s details about unit tests',
+                passed: getRandomTests(item.uTestPassed),
+                failed: getRandomTests(item.uTestFailed)
+            };
+
+            item.fTestDetails = {
+                details: 'It\'s details about functional tests',
+                passed: getRandomTests(item.fTestPassed),
+                failed: getRandomTests(item.fTestFailed)
+            };
         }
 
         data.push(item);
@@ -97,56 +138,17 @@ function getInitialData() {
 function getGroupData(id, group, callback) {
     var integerId = parseInt(id, 0);
 
-    function getRandomTests(number) {
-        var tests = [],
-            i = 0;
-
-        for (i; i < number; i++) {
-            tests.push({
-                name: 'Test# ' + i + 1,
-                duration: Math.random() * 100
-            });
-        }
-        return tests;
-    }
 
     function getResult(item) {
         var result = '';
 
         if (group === 'metrics') {
-            item.metricsDetails = {
-                details: 'It\'s details about metrics',
-                test: 'Some information about test',
-                maintainability: 'Some information about maintainability',
-                security: 'Some information about security',
-                workmanship: 'Some information about workmanship'
-            };
-
             result = item.metricsDetails;
         } else if (group === 'build') {
-            item.buildDetails = {
-                details: 'It\'s details about build tests',
-                numberOfClasses: parseInt(Math.random() * 100, 0),
-                duration: Math.random() * 100,
-                result: item.build
-            };
-
             result = item.buildDetails;
         } else if (group === 'uTests') {
-            item.uTestDetails = {
-                details: 'It\'s details about unit tests',
-                passed: getRandomTests(item.uTestPassed),
-                failed: getRandomTests(item.uTestFailed)
-            };
-
             result = item.uTestDetails;
         } else if (group === 'fTests') {
-            item.fTestDetails = {
-                details: 'It\'s details about functional tests',
-                passed: getRandomTests(item.fTestPassed),
-                failed: getRandomTests(item.fTestFailed)
-            };
-
             result = item.fTestDetails;
         } else {
             result = 'Data can not be received';
