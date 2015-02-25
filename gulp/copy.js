@@ -9,7 +9,7 @@ module.exports = function (gulp) {
     });
 
     gulp.task('copy-scripts', ['ng-tpl', 'ng-annotate'], function () {
-        gulp.src([
+        return gulp.src([
             config.bower_path + 'angular/angular.min.js',
             config.bower_path + 'angular-ui-router/release/angular-ui-router.min.js',
             config.bower_path + 'angular-animate/angular-animate.min.js',
@@ -29,7 +29,7 @@ module.exports = function (gulp) {
     });
 
     gulp.task('copy-css', ['compile-css'], function () {
-        gulp.src([
+        return gulp.src([
             config.bower_path + 'bootstrap/dist/css/bootstrap.min.css',
             config.bower_path + 'angular-chart.js/dist/angular-chart.css',
             config.build_path + 'temp/*.css'

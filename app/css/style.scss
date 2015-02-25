@@ -47,20 +47,29 @@ body {
 
 .borderRed {
   border-color: red;
-  background: -webkit-linear-gradient(left, rgb(190, 7, 18), white 80%) fixed;
+  background: -webkit-linear-gradient(left, rgb(190, 7, 18), white 80%);
+  background: -moz-linear-gradient(left, rgb(190, 7, 18), white 80%);
+  background: -ms-linear-gradient(left, rgb(190, 7, 18), white 80%);
+  background: -o-linear-gradient(left, rgb(190, 7, 18), white 80%);
 }
 
 .rowRed {
   @extend .cust-row;
   border-color: red;
-  background: -webkit-linear-gradient(left, rgba(255, 0, 0, 0.07), white 80%) fixed;
+  background: -webkit-linear-gradient(left, rgba(255, 0, 0, 0.07), white 80%);
+  background: -moz-linear-gradient(left, rgba(255, 0, 0, 0.07), white 80%);
+  background: -ms-linear-gradient(left, rgba(255, 0, 0, 0.07), white 80%);
+  background: -o-linear-gradient(left, rgba(255, 0, 0, 0.07), white 80%);
   color: $red-font-color;
 }
 
 .rowBlue {
   @extend .cust-row;
   border-color: #0097d5;
-  background: -webkit-linear-gradient(left, rgba(89, 164, 242, 0.15), white 80%) fixed;
+  background: -webkit-linear-gradient(left, rgba(89, 164, 242, 0.15), white 80%);
+  background: -moz-linear-gradient(left, rgba(89, 164, 242, 0.15), white 80%);
+  background: -ms-linear-gradient(left, rgba(89, 164, 242, 0.15), white 80%);
+  background: -o-linear-gradient(left, rgba(89, 164, 242, 0.15), white 80%);
   color: $blue-font-color;
 }
 
@@ -75,7 +84,10 @@ body {
 .rowGreen {
   @extend .cust-row;
   border-color: green;
-  background: -webkit-linear-gradient(left, rgba(68, 205, 68, 0.14), white 80%) fixed;
+  background: -webkit-linear-gradient(left, rgba(68, 205, 68, 0.14), white 80%);
+  background: -moz-linear-gradient(left, rgba(68, 205, 68, 0.14), white 80%);
+  background: -ms-linear-gradient(left, rgba(68, 205, 68, 0.14), white 80%);
+  background: -o-linear-gradient(left, rgba(68, 205, 68, 0.14), white 80%);
   color: $green-font-color;
 }
 
@@ -151,6 +163,9 @@ thead th {
   @extend .shadow;
   border: 2px solid rgba(11, 81, 20, 0.79);
   background: -webkit-linear-gradient(top left, rgba(15, 237, 68, 0.17), white 25%);
+  background: -moz-linear-gradient(top left, rgba(15, 237, 68, 0.17) 0%, white 25%);
+  background: -ms-linear-gradient(top left, rgba(15, 237, 68, 0.17), white 25%);
+  background: -o-linear-gradient(top left, rgba(15, 237, 68, 0.17), white 25%);
 }
 
 .title {
@@ -168,6 +183,9 @@ thead th {
   @extend .shadow;
   border: 2px solid rgba(214, 6, 18, 0.55);
   background: -webkit-linear-gradient(top left, rgba(249, 3, 3, 0.17), white 22%);
+  background: -moz-linear-gradient(top left, rgba(249, 3, 3, 0.17), white 22%);
+  background: -ms-linear-gradient(top left, rgba(249, 3, 3, 0.17), white 22%);
+  background: -o-linear-gradient(top left, rgba(249, 3, 3, 0.17), white 22%);
 }
 
 .big-rectangle.red .title {
@@ -179,6 +197,9 @@ thead th {
   @extend .shadow;
   border: 2px solid rgba(7, 51, 141, 0.79);
   background: -webkit-linear-gradient(top left, rgba(38, 49, 156, 0.17), white 22%);
+  background: -moz-linear-gradient(top left, rgba(38, 49, 156, 0.17), white 22%);
+  background: -ms-linear-gradient(top left, rgba(38, 49, 156, 0.17), white 22%);
+  background: -o-linear-gradient(top left, rgba(38, 49, 156, 0.17), white 22%);
 }
 
 .big-rectangle.blue .title {
@@ -337,6 +358,9 @@ thead th {
   font-size: 14px;
   color: brown;
   background: -webkit-linear-gradient(top, rgba(140, 146, 139, 0.60), white 92%);
+  background: -moz-linear-gradient(top, rgba(140, 146, 139, 0.60), white 92%);
+  background: -ms-linear-gradient(top, rgba(140, 146, 139, 0.60), white 92%);
+  background: -o-linear-gradient(top, rgba(140, 146, 139, 0.60), white 92%);
   float: left;
 }
 
