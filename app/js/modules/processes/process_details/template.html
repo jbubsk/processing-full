@@ -1,5 +1,7 @@
 <div class="row expand-block">
 
+    <!-- METRICS BLOCK -->
+
     <div class="col-md-2 big-rectangle"
          ng-class="process.metricsClass"
          ng-click="openDetails('metrics', $event)">
@@ -21,11 +23,14 @@
         </div>
     </div>
 
-    <div class="col-md-2 big-rectangle"
+    <!-- BUILD BLOCK -->
+
+    <div ng-if="process.build !== 'pending'"
+         class="col-md-2 big-rectangle"
          ng-class="process.buildClass"
          ng-click="openDetails('build', $event)">
 
-        <div ng-if="process.build !== 'pending'">
+        <div>
             <div class="title">Build</div>
             <div class="image-row one">
                 <div class="icon-wrapper-big pc fl">
@@ -42,13 +47,15 @@
         </div>
     </div>
 
-    <!-- unit tests -->
-    <div class="col-md-2 big-rectangle chart-wrapper"
+    <!-- UNIT TESTS BLOCK -->
+
+    <div ng-if="process.unitTest !== 'pending'"
+         class="col-md-2 big-rectangle chart-wrapper"
          ng-class="process.uTestClass"
          ng-controller="UnitChartController"
          ng-click="openDetails('uTests', $event)">
 
-        <div ng-if="process.unitTest !== 'pending'">
+        <div>
             <div class="title">Unit test</div>
             <canvas chart-pie class="chart"
                     data="data"
@@ -78,13 +85,15 @@
         </div>
     </div>
 
-    <!-- functional tests -->
-    <div class="col-md-2 big-rectangle"
+    <!-- FUNCTIONAL TESTS BLOCK  -->
+
+    <div ng-if="process.functionalTest !== 'pending'"
+         class="col-md-2 big-rectangle"
          ng-class="process.fTestClass"
          ng-controller="FunctionalChartController"
          ng-click="openDetails('fTests', $event)">
 
-        <div ng-if="process.functionalTest !== 'pending'">
+        <div>
             <div class="title">Functional test</div>
             <canvas chart-pie class="chart"
                     data="data"
@@ -113,7 +122,8 @@
         </div>
     </div>
 
-    <!-- result -->
+    <!-- RESULT  BLOCK -->
+
     <div class="col-md-2" ng-controller="ResultController">
 
         <div class="result-title">Result:</div>
@@ -141,6 +151,8 @@
         </div>
 
     </div>
+
+    <!-- CHILD GROUP DETAILS VIEW-->
 
     <div ui-view=""></div>
 </div>

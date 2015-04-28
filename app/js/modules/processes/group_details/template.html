@@ -46,32 +46,26 @@
 
             <div ng-if="view === 'uTests' || view === 'fTests'">
 
-                <div class="fl">
-                    <a class="failed" ng-bind="'Failed:' + model.failed.length"></a>
+                <div class="fl test-list">
+                    <a class="result failed" ng-bind="'Failed:' + model.failed.length"></a>
 
                     <div class="scroll">
 
                         <div ng-repeat="test in model.failed">
-                            <span>Name:</span>
-                            <span ng-bind="test.name"></span>
-                            <br/>
-                            <span>Duration:</span>
-                            <span ng-bind="test.duration + ' s'"></span>
+                            <span class="test-name">Name: {{test.name}}</span>
+                            <span class="test-duration">Duration: {{test.duration + ' s'}}</span>
                         </div>
                     </div>
                 </div>
 
-                <div>
-                    <a class="succeed" ng-bind="'Passed:' + model.passed.length"></a>
+                <div class="fl test-list">
+                    <a class="result succeed" ng-bind="'Passed:' + model.passed.length"></a>
 
                     <div class="scroll">
 
                         <div ng-repeat="test in model.passed">
-                            <span>Name:</span>
-                            <span ng-bind="test.name"></span>
-                            <br/>
-                            <span>Duration:</span>
-                            <span ng-bind="test.duration + ' s'"></span>
+                            <span class="test-name">Name: {{test.name}}</span>
+                            <span class="test-duration">Duration: {{test.duration + ' s'}}</span>
                         </div>
                     </div>
                 </div>

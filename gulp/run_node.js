@@ -12,17 +12,4 @@ module.exports = function (gulp) {
             watch: ['none']
         });
     });
-
-    gulp.task('run-prod-env', ['clean-temp'], function () {
-        return nodemon({
-            script: 'server.js',
-            env: {
-                'NODE_ENV': 'prod',
-                'PORT': 8200
-            },
-            nodeArgs: ['--debug'],
-            watch: ['none']
-        });
-    });
-
 };
